@@ -19,8 +19,8 @@ class MainView:
         page.add(
             ft.Row(
                 controls=[
-                    self.inspectionView,
                     self.settingsView,
+                    self.inspectionView,
                 ],
                 alignment=ft.MainAxisAlignment.SPACE_AROUND,
                 expand=True,
