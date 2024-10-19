@@ -6,19 +6,23 @@ from src.view.main.settings.settingsView import SettingsView
 
 class MainView:
     def __init__(self):
-        self.page = None
-        self.contentView = None
+        self.page: ft.Page = None
+        self.inspectionView: InspectionView = None
+        self.settingsView: SettingsView = None
         ft.app(target=self.build)
 
     def build(self, page: ft.Page):
         self.page = page
-        self.contentView = InspectionView()
+        self.inspectionView = InspectionView()
         self.settingsView = SettingsView()
 
         page.add(
             ft.Row(
-                controls=[ft.Text("Main View")],
-                alignment=ft.MainAxisAlignment.SPACE_EVENLY,
+                controls=[
+                    self.inspectionView,
+                    self.settingsView,
+                ],
+                alignment=ft.MainAxisAlignment.SPACE_AROUND,
                 expand=True,
             )
         )
