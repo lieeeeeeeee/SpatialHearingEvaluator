@@ -5,8 +5,8 @@ from src.view.main.settings.browseView import BrowseView
 class SettingsView(ft.Container):
     def __init__(self):
         super().__init__()
-        self.inputDirView = BrowseView()
-        self.outputDirView = BrowseView()
+        self.inputDirView = BrowseView("Input Directory")
+        self.outputDirView = BrowseView("Output Directory")
         self.create_components()
 
     def create_components(self):
@@ -15,8 +15,9 @@ class SettingsView(ft.Container):
                 self.inputDirView,
                 self.outputDirView,
             ],
-            alignment=ft.MainAxisAlignment.SPACE_AROUND,
+            alignment=ft.MainAxisAlignment.START,
             expand=True,
         )
+
+        self.padding = ft.padding.symmetric(vertical=10)
         self.expand = True
-        self.bgcolor = ft.colors.BLUE

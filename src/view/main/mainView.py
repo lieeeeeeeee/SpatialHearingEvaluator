@@ -9,23 +9,28 @@ class MainView:
         self.page: ft.Page = None
         self.inspectionView: InspectionView = None
         self.settingsView: SettingsView = None
-        ft.app(target=self.build)
+        self.content = None
 
-    def build(self, page: ft.Page):
-        self.page = page
+        self.build()
+
+    def build(self):
         self.inspectionView = InspectionView()
         self.settingsView = SettingsView()
-
-        page.add(
-            ft.Row(
-                controls=[
-                    self.settingsView,
-                    self.inspectionView,
-                ],
-                alignment=ft.MainAxisAlignment.SPACE_AROUND,
-                expand=True,
-            )
+        self.content = ft.Row(
+            controls=[
+                self.settingsView,
+                self.inspectionView,
+            ],
+            alignment=ft.MainAxisAlignment.SPACE_AROUND,
+            expand=True,
         )
 
+    def loop(self):
+        ft.app(target=self.initAdd)
+
+    def initAdd(self, page: ft.Page):
+        self.page = page
+        page.add(self.content)
+        
     def update(self):
         self.page.update()
