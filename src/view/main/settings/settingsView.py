@@ -7,17 +7,24 @@ class SettingsView(ft.Container):
         super().__init__()
         self.inputDirView = BrowseView("Input Directory")
         self.outputDirView = BrowseView("Output Directory")
+        self.subjectNameTextField = ft.TextField()
+        self.experimentNameTextField = ft.TextField()
         self.create_components()
 
     def create_components(self):
+        self.subjectNameTextField.label = "Subject Name"
+        self.experimentNameTextField.label = "Experiment Name"
+
         self.content = ft.Column(
             controls=[
                 self.inputDirView,
                 self.outputDirView,
+                self.subjectNameTextField,
+                self.experimentNameTextField,
             ],
             alignment=ft.MainAxisAlignment.START,
-            expand=True,
+            spacing=20,
         )
 
-        self.padding = ft.padding.symmetric(vertical=10)
+        self.padding = ft.padding.symmetric(vertical=20, horizontal=40)
         self.expand = True

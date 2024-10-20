@@ -11,6 +11,7 @@ class BrowseView(ft.Container):
     def create_components(self):
         spacing = 20
         self.textField.label = self.label
+        self.textField.expand = True
         self.browseButton.icon = ft.icons.FOLDER
 
         self.content = ft.Row(
@@ -18,8 +19,7 @@ class BrowseView(ft.Container):
                 self.textField,
                 self.browseButton,
             ],
-            alignment=ft.MainAxisAlignment.CENTER,
+            alignment=ft.MainAxisAlignment.START,
             spacing=spacing,
             expand=True,
         )
-        self.padding = spacing
