@@ -28,3 +28,16 @@ class SettingsView(ft.Container):
 
         self.padding = ft.padding.symmetric(vertical=20, horizontal=40)
         self.expand = True
+
+    # public
+    def get_input_dir(self):
+        return self.inputDirView.textField.value
+    
+    def get_output_dir(self):
+        return self.outputDirView.textField.value
+    
+    def get_subject_name(self):
+        return self.subjectNameTextField.value
+    
+    def get_experiment_name(self):
+        return self.experimentNameTextField.value
