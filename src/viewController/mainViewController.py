@@ -10,13 +10,25 @@ class MainViewController:
 
     def events_handler(self):
         print("Events Handler")
-        self.mainView.settingsView.inputDirView.browseButton.on_click = self.on_click_input_dir_browse_button
-        self.mainView.settingsView.outputDirView.browseButton.on_click = self.on_click_output_dir_browse_button
+        self.mainView.settingsView.inputDirBrowseView.button.on_click = self.on_click_input_dir_browse_button
+        self.mainView.settingsView.outputDirBrowseView.button.on_click = self.on_click_output_dir_browse_button
+        self.mainView.inspectionView.controlButtonsView.stopButton.on_click = self.on_click_stop_button
+        self.mainView.inspectionView.controlButtonsView.startButton.on_click = self.on_click_start_button
+        self.mainView.inspectionView.controlButtonsView.outputButton.on_click = self.on_click_output_button
 
     def on_click_input_dir_browse_button(self, event):
         print("Input Dir Browse Button Clicked")
 
     def on_click_output_dir_browse_button(self, event):
         print("Output Dir Browse Button Clicked")
+
+    def on_click_stop_button(self, event):
+        print("Stop Button Clicked")
+
+    def on_click_start_button(self, event):
+        print("Start Button Clicked")
+
+    def on_click_output_button(self, event):
+        print("Output Button Clicked")
 
 

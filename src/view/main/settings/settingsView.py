@@ -5,20 +5,25 @@ from src.view.main.settings.browseView import BrowseView
 class SettingsView(ft.Container):
     def __init__(self):
         super().__init__()
-        self.inputDirView = BrowseView("Input Directory")
-        self.outputDirView = BrowseView("Output Directory")
-        self.subjectNameTextField = ft.TextField()
-        self.experimentNameTextField = ft.TextField()
+        self.inputDirBrowseView = None
+        self.outputDirBrowseView = None
+        self.subjectNameTextField = None
+        self.experimentNameTextField = None
+
         self.create_components()
 
     def create_components(self):
+        self.inputDirBrowseView = BrowseView("Input Directory")
+        self.outputDirBrowseView = BrowseView("Output Directory")
+        self.subjectNameTextField = ft.TextField()
+        self.experimentNameTextField = ft.TextField()
         self.subjectNameTextField.label = "Subject Name"
         self.experimentNameTextField.label = "Experiment Name"
 
         self.content = ft.Column(
             controls=[
-                self.inputDirView,
-                self.outputDirView,
+                self.inputDirBrowseView,
+                self.outputDirBrowseView,
                 self.subjectNameTextField,
                 self.experimentNameTextField,
             ],
@@ -31,10 +36,10 @@ class SettingsView(ft.Container):
 
     # public
     def get_input_dir(self):
-        return self.inputDirView.textField.value
+        return self.inputDirBrowseView.textField.value
     
     def get_output_dir(self):
-        return self.outputDirView.textField.value
+        return self.outputDirBrowseView.textField.value
     
     def get_subject_name(self):
         return self.subjectNameTextField.value

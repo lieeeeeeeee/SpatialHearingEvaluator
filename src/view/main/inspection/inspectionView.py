@@ -6,11 +6,13 @@ from src.view.main.inspection.controlButtonsView import ControlButtonsView
 class InspectionView(ft.Container):
     def __init__(self):
         super().__init__()
-        self.localizationView = LocalizationView()
-        self.controlButtonsView = ControlButtonsView()
+        self.localizationView = None
+        self.controlButtonsView = None
         self.create_components()
 
     def create_components(self):
+        self.localizationView = LocalizationView()
+        self.controlButtonsView = ControlButtonsView()
         self.content = ft.Column(
             controls=[
                 self.localizationView,
@@ -20,4 +22,4 @@ class InspectionView(ft.Container):
             expand=True,
         )
         self.expand = True
-        self.bgcolor = ft.colors.GREEN
+        self.padding = 20
