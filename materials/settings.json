@@ -1,0 +1,7 @@
+{
+    "inputDirPath": "materials/sounds/input/",
+    "outputDirPath": "materials/sounds/output/",
+    "subjectName": "subject name",
+    "experimentName": "experiment",
+    "scaleDistance": 30
+}
