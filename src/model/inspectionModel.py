@@ -1,25 +1,22 @@
 import os
 import sys
 import random
+import re
 
 class InspectionModel:
-    SOUND_DATA_DIR_PATH  = "materials/sounds/stereo/"
-    OUTPUT_DIR_PATH = "materials/sounds/output/"
-
     def __init__(self):
         self.hasStarted = False
         self.soundFileNames = []
         self.results = []
         self.popedSoundFileName = None
-
-    
-    
-    def get_angle_from_sound_file_name(self, soundFileName: str):
-        return int(soundFileName.split("_")[-1].split(".")[0])
     
     def sort_results(self):
         self.results.sort(key=lambda x: x[0])
         return self.results
+    def extract_angle_from_sound_file_name(self, soundFileName: str):
+        pattern = r'\d{3}'
+        matches = re.findall(pattern, soundFileName)
+        return int(matches[-1]) if matches else None
     
     # public
     def set_soundFileNames(self, soundFileNames: list):
@@ -34,7 +31,8 @@ class InspectionModel:
         return self.popedSoundFileName
     
     def save_result(self, answer: int):
-        solution = self.get_angle_from_sound_file_name(self.popedSoundFileName)
+        solution = self.extract_angle_from_sound_file_name(self.popedSoundFileName)
+        if solution == None: solution = -1
         self.results.append((solution, answer))
 
     def remove_data(self):
@@ -42,16 +40,20 @@ class InspectionModel:
         self.results = []
         self.popedSoundFileName = None
 
-    def output_results_to_csv(self):
-        path = self.OUTPUT_DIR_PATH + "results.csv"
+    def output_results_to_csv(self, outputDirPath: str, fileName: str):
+        if fileName == "_": fileName = "result"
+
+        path = outputDirPath + fileName 
         results = self.sort_results()
         # もし同じファイル名が存在する場合は名前の後ろに数字をつける
         if os.path.exists(path):
             i = 1
             while True:
-                path = self.OUTPUT_DIR_PATH + f"results_{i}.csv"
+                path = outputDirPath + fileName + f"_{i}"
                 if not os.path.exists(path): break
                 i += 1
+
+        path = path + ".csv"
 
         with open(path, "w") as f:
             f.write("solution,answer\n")

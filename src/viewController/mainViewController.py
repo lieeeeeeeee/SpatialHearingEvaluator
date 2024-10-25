@@ -50,7 +50,7 @@ class MainViewController:
 
     def on_click_output_button(self, event):
         print("Output Button Clicked")
-        self.inspectionModel.output_results_to_csv()
+        self.output_results_to_csv()        
 
     def on_click_ok_button(self, event):
         print("OK Button Clicked")
@@ -156,7 +156,16 @@ class MainViewController:
         print("Inspection Finished")
         self.update_progressView_count()
         self.switch_progressView_okButton_availability(False)
+        self.dismiss_localizationView_pointer()
         self.set_inspection_has_started(False)
+    
+    def output_results_to_csv(self):
+        print("Output Results to CSV")
+        outputDirPath = self.get_output_dir()
+        subjectName = self.get_subject_name()
+        experimentName = self.get_experiment_name()
+        fileName = f"{subjectName}_{experimentName}"
+        self.inspectionModel.output_results_to_csv(outputDirPath, fileName)
 
     # external
     ## homeModel
