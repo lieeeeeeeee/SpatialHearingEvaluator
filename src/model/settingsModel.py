@@ -13,6 +13,7 @@ class SettingsModel:
             "subjectName": "subject name",  
             "experimentName": "experiment",
             "scaleDistance": 30,
+            "initSoundCount": 10
         }
         self.settings = None
         self.load()
@@ -22,6 +23,7 @@ class SettingsModel:
     def get_subject_name(self): return self.settings["subjectName"]
     def get_experiment_name(self): return self.settings["experimentName"]
     def get_scale_distance(self): return self.settings["scaleDistance"]
+    def get_init_sound_count(self): return self.settings["initSoundCount"]
 
     def set_input_dir_path(self, inputDirPath): 
         self.settings["inputDirPath"] = inputDirPath

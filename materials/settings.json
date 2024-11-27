@@ -3,5 +3,6 @@
     "outputDirPath": "materials/sounds/output/",
     "subjectName": "subject name",
     "experimentName": "experiment",
-    "scaleDistance": 30
+    "scaleDistance": 30,
+    "initSoundCount": 10
 }

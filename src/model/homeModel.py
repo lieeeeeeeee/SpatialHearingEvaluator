@@ -3,7 +3,7 @@ import os
 
 class HomeModel:
     def __init__(self):
-        pass
+        self.soundCount = 0
 
     # public
     def calculate_intersection_point(self, centerX, centerY, radius, x, y):
@@ -18,6 +18,19 @@ class HomeModel:
         angle_deg = math.degrees(angle_rad)
         angle_deg = (angle_deg + 360) % 360
         return angle_deg
+    
+    def refresh_count(self, fileCount, initCount):
+        if self.soundCount == 0: self.soundCount = initCount
+        count = fileCount if fileCount < self.soundCount else self.soundCount
+        return count
+    
+    def change_count(self, count, value, upperLimit):
+        c = count + value
+        lowerLimit = 0
+        if c < lowerLimit: c = lowerLimit
+        if upperLimit < c: c = upperLimit
+        self.soundCount = c
+        return c
     
     def change_angle_anchor(self, angle, anchor):
         return (angle - anchor) % 360
